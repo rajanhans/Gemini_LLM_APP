@@ -8,7 +8,7 @@ import google.generativeai as genai
 with st.sidebar:
     genai.configure(api_key=st.text_input("Please provide your Gemini Pro API Key"))
     "[Get a Gemini API key](https://makersuite.google.com/app/apikey)"
-    "[View the source code](https://github.com/rajanhans/Gemini_LLM_APP/chatbot.py)"
+    "[View the source code](https://github.com/rajanhans/Gemini_LLM_APP/blob/main/chatbot.py)"
 
 
 
