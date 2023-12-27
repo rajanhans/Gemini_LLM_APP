@@ -1,16 +1,27 @@
 from dotenv import load_dotenv
 load_dotenv()
-
+import hmac
 import streamlit as st
 import os
 import google.generativeai as genai
 api_key =""
 
+
+
+# Main Streamlit app starts here
+
+
+
 with st.sidebar:
-    api_key=st.text_input("Please provide your Gemini Pro API Key")
-    genai.configure(api_key=api_key)
-    "[Get a Gemini API key](https://makersuite.google.com/app/apikey)"
-   
+# Show input for password.
+    st.text_input( "Password", type="password", on_change=password_entered, key="password")
+    if hmac.compare_digest(st.session_state["password"], st.secrets["password"]):
+        #api_key=st.text_input("Please provide your Gemini Pro API Key")
+        genai.configure(api_key=st.secrets["api_key"])
+        "[Get a Gemini API key](https://makersuite.google.com/app/apikey)"
+    else:
+        st.error("😕 Password incorrect")
+        st.stop()
 
 
 ## function to load Gemini Pro model and get response
