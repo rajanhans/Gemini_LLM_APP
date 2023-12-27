@@ -22,9 +22,9 @@ def get_gemini_respone(question):
     return response
 
 st.title("💬 Rajan's Chatbot-Google Gemini Pro")
-st.divider()
-st.text("!!! Please enter or create a Gemini Pro API key -see sidebar !!!")
 
+st.text("!!! Please enter or create a Gemini Pro API key -see sidebar !!!")
+st.divider()
 
 #Initialize session state for chat history if it doesn't exist
 if 'chat_history' not in st.session_state:
