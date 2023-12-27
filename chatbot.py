@@ -14,7 +14,7 @@ api_key =""
 
 with st.sidebar:
 # Show input for password.
-    st.text_input( "Password", type="password", on_change=password_entered, key="password")
+    st.text_input( "Password", type="password", key="password")
     if hmac.compare_digest(st.session_state["password"], st.secrets["password"]):
         #api_key=st.text_input("Please provide your Gemini Pro API Key")
         genai.configure(api_key=st.secrets["api_key"])
