@@ -47,8 +47,6 @@ submit=st.button("Ask your question")
 
 
 if submit and input:
-    if api_key =="" :
-        st.error("Please enter Gemini Pro Key !")
     response = get_gemini_respone(input)
     ## Add user query and response to session chat history
     st.session_state['chat_history'].append(("You", input))
