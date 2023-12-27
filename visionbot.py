@@ -57,13 +57,15 @@ if uploaded_file is not None:
 submit=st.button("Tell me about the image")
 
 if submit and input:
-    response = get_gemini_response(input)
+    response = get_gemini_response(input, image)
     ## Add user query and response to session chat history
     st.session_state['chat_history'].append(("You", input))
     st.subheader("The response is")
     for chunk in response:
         st.write(chunk.text)
         st.session_state['chat_history'].append(("Bot", chunk.text))
+
+
 
 st.subheader("The chat history is")
 for role, text in st.session_state['chat_history']:
