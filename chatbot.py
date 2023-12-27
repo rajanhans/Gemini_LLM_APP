@@ -6,10 +6,9 @@ import os
 import google.generativeai as genai
 
 with st.sidebar:
-
     genai.configure(api_key=st.text_input("Please provide your Gemini Pro API Key"))
-    "[Get a Geminit API key](https://makersuite.google.com/app/apikey)"
-
+    "[Get a Gemini API key](https://makersuite.google.com/app/apikey)"
+    "[View the source code](https://github.com/rajanhans/Gemini_LLM_APP/chatbot.py)"
 
 
 
@@ -21,7 +20,7 @@ def get_gemini_respone(question):
     response=chat.send_message(question, stream=True)
     return response
 
-st.header("Rajan's Chat Bot for Google Gemini Pro")
+st.title("💬 Rajan's Chatbot-Google Gemini Pro")
 
 #Initialize session state for chat history if it doesn't exist
 if 'chat_history' not in st.session_state:
