@@ -23,11 +23,11 @@ with st.sidebar:
     else:
         st.error("😕 Password incorrect")
         st.stop()
-
+   
 
 ## function to load Gemini Pro model and get response
 model = genai.GenerativeModel("gemini-pro-vision")
-chat = model.start_chat(history=[])
+
 
 def get_gemini_response(input,image):
     model = genai.GenerativeModel('gemini-pro-vision')
@@ -37,7 +37,7 @@ def get_gemini_response(input,image):
        response = model.generate_content(image)
     return response.text
 
-st.title("💬 Rajan's Chatbot-Google Gemini Pro")
+st.title("💬 Rajan's Visionbot-Google Gemini Pro-Vision")
 
 st.text("!!! Please enter or create a Gemini Pro API key -see sidebar !!!")
 st.divider()
@@ -54,20 +54,13 @@ if uploaded_file is not None:
     st.image(image, caption="Uploaded Image.", use_column_width=True)
 
 
-submit=st.button("Tell me about the image")
+submit=st.button("Lets Analyse..")
 
 if submit and input:
     response = get_gemini_response(input, image)
     ## Add user query and response to session chat history
     st.session_state['chat_history'].append(("You", input))
     st.subheader("The response is")
-    response=get_gemini_response(input,image)
-    st.subheader("The Response is")
     st.write(response)
 
 
-
-
-st.subheader("The chat history is")
-for role, text in st.session_state['chat_history']:
-    st.write(f"{role}:{text}")
