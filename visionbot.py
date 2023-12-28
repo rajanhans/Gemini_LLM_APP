@@ -61,9 +61,10 @@ if submit and input:
     ## Add user query and response to session chat history
     st.session_state['chat_history'].append(("You", input))
     st.subheader("The response is")
-    for chunk in response:
-        st.write(chunk.text)
-        st.session_state['chat_history'].append(("Bot", chunk.text))
+    response=get_gemini_response(input,image)
+    st.subheader("The Response is")
+    st.write(response)
+
 
 
 
