@@ -5,7 +5,7 @@ import streamlit as st
 import os
 import google.generativeai as genai
 api_key =""
-
+showhistory=""
 
 
 # Main Streamlit app starts here
@@ -22,7 +22,7 @@ with st.sidebar:
     else:
         st.error("😕 Password incorrect")
         st.stop()
-
+    showhistory = st.checkbox('Click to show history')
 
 ## function to load Gemini Pro model and get response
 model = genai.GenerativeModel("gemini-pro")
@@ -55,6 +55,7 @@ if submit and input:
         st.write(chunk.text)
         st.session_state['chat_history'].append(("Bot", chunk.text))
 
-st.subheader("The chat history is")
-for role, text in st.session_state['chat_history']:
-    st.write(f"{role}:{text}")
+if showhistory="on":
+    st.subheader("The chat history is")
+    for role, text in st.session_state['chat_history']:
+        st.write(f"{role}:{text}")
